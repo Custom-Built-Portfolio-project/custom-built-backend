@@ -9,7 +9,7 @@ import mongoose from "mongoose";
 const PORT = process.env.PORT || 3001;
 
 const connection = mongoose.connect(
-  "mongodb+srv://facundovies:123@cluster0.3geflhe.mongodb.net/MongoAvanzado?retryWrites=true&w=majority"
+  "mongodb+srv://facundovies:123@cluster0.3geflhe.mongodb.net/customBuilt?retryWrites=true&w=majority"
 );
 
 const app = express();
