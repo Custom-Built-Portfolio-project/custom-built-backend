@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 
-const collection = "Products";
+const collection = "products";
+const subSchema = new mongoose.Schema({
+
+})
 
 const schema = new mongoose.Schema(
   {
@@ -14,14 +17,23 @@ const schema = new mongoose.Schema(
       required: true,
     },
     category: {
-      type: String,
+      type:mongoose.Schema.Types.ObjectId,
+      ref: "category",
+      required: true
+    },
+    subCategory:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"subType",
       required: true,
-      enum: [""],
+    },
+    subType:{
+      type:mongoose.Schema.Types.ObjectId,
+      required:true
     },
     code: {
       type: String,
       required: true,
-      unique: true,
+      index: true
     },
     stock: {
       type: Number,
@@ -40,7 +52,7 @@ const schema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    send:{
+    freeShipping:{
       type: Boolean
     }
   },
