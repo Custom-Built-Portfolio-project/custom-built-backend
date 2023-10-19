@@ -2,9 +2,7 @@ import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 
 const collection = "products";
-const subSchema = new mongoose.Schema({
-
-})
+const subSchema = new mongoose.Schema({});
 
 const schema = new mongoose.Schema(
   {
@@ -17,23 +15,24 @@ const schema = new mongoose.Schema(
       required: true,
     },
     category: {
-      type:mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "category",
-      required: true
-    },
-    subCategory:{
-      type:mongoose.Schema.Types.ObjectId,
-      ref:"subType",
       required: true,
     },
-    subType:{
-      type:mongoose.Schema.Types.ObjectId,
-      required:true
+    subCategory: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "subCategory",
+      required: true,
+    },
+    subType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "subType",
+      required: true,
     },
     code: {
       type: String,
       required: true,
-      index: true
+      index: true,
     },
     stock: {
       type: Number,
@@ -52,9 +51,10 @@ const schema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    freeShipping:{
-      type: Boolean
-    }
+    freeShipping: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
