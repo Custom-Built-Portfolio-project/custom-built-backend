@@ -6,6 +6,7 @@ const schema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+    unique: true
   },
   subTypes: [
     {
@@ -14,6 +15,8 @@ const schema = new mongoose.Schema({
     },
   ],
 });
+
+schema.index({ name: 1 });
 
 const subCategoryModel = mongoose.model(collection, schema);
 

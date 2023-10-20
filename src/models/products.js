@@ -1,14 +1,15 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
+import reviewsModel from "./reviews.js";
 
 const collection = "products";
-const subSchema = new mongoose.Schema({});
 
 const schema = new mongoose.Schema(
   {
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     description: {
       type: String,
@@ -55,6 +56,7 @@ const schema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    reviews: [reviewsModel],
   },
   { timestamps: true }
 );
