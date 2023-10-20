@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
-import reviewsModel from "./reviews.js";
+
 
 const collection = "products";
 
@@ -56,8 +56,20 @@ const schema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    reviews: [reviewsModel],
+    reviews: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref:"reviews"
+    }],
+    adminDB: {
+      type: Boolean,
+      default: true,
+    },
+    adminCommerce:{
+      type: Boolean,
+      default: false
+    }
   },
+  
   { timestamps: true }
 );
 

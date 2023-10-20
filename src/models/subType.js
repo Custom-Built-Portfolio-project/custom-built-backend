@@ -6,11 +6,10 @@ const schema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    index: true,
   },
 });
-
-schema.index({ name: 1 });
 
 const subTypeModel = mongoose.model(collection, schema);
 

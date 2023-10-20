@@ -8,6 +8,9 @@ const postCategory = async (req, res) => {
       return res
         .status(400)
         .send({ status: "error", error: "Incomplete values" });
+    
+    const existingCategory = await categoryModel.findOne({name: name});
+    if(existingCategory) return res.status(400).send({error: "Ya existe una categoria con ese nombre"})
 
     const newCategory = {
       name,
