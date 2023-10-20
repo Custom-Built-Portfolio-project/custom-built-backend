@@ -6,6 +6,7 @@ import routes from "./routes/index.js";
 import cors from "cors";
 import mongoose from "mongoose";
 
+
 const PORT = process.env.PORT || 3001;
 
 const connection = mongoose.connect(

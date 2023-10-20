@@ -1,27 +1,39 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
+import reviewsModel from "./reviews.js";
 
-const collection = "Products";
+const collection = "products";
 
 const schema = new mongoose.Schema(
   {
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     description: {
       type: String,
       required: true,
     },
     category: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "category",
       required: true,
-      enum: [""],
+    },
+    subCategory: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "subCategory",
+      required: true,
+    },
+    subType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "subType",
+      required: true,
     },
     code: {
       type: String,
       required: true,
-      unique: true,
+      index: true,
     },
     stock: {
       type: Number,
@@ -40,9 +52,11 @@ const schema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    send:{
-      type: Boolean
-    }
+    freeShipping: {
+      type: Boolean,
+      default: false,
+    },
+    reviews: [reviewsModel],
   },
   { timestamps: true }
 );
