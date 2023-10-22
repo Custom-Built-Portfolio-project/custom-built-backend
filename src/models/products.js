@@ -56,7 +56,10 @@ const schema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    reviews: [reviewsModel],
+    reviews: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref:"reviews"
+    }],
   },
   { timestamps: true }
 );
