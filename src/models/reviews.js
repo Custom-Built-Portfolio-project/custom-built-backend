@@ -8,6 +8,18 @@ const schema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
+  image: {
+    type: String,
+    required:false
+  },
+  advantages:{
+    type: String,
+    required: false,
+  },
+  disadvantages:{
+    type: String,
+    required: false
+  },
   rating: {
     type: Number,
     required: true,

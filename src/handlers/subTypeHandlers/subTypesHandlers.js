@@ -1,6 +1,6 @@
 import subTypeModel from "../../models/subType.js";
 
-const postSubType = async (req, res) => {
+export const postSubType = async (req, res) => {
   const { name } = req.body;
   try {
     if (!name)
@@ -20,9 +20,23 @@ const postSubType = async (req, res) => {
 
     return res.status(201).json({ status: "success", payload: result });
   } catch (error) {
-    console.log(error.message);
+    
     return res.status(500).json({ error: error.message });
   }
 };
 
-export default postSubType;
+export const getSubtypeByName = async (req, res) => {
+  const { name } = req.body;
+  if (typeof name !== 'string' || name.trim() === '') {
+    return res.status(400).send('Nombre inválido');
+  }
+  try {
+    const Subtype = await subTypeModel.findOne({ name: name }).exec();;
+    if (Subtype) return res.status(200).json(Subtype);
+    else return res.status(404).send("No encontré el subtipo amigo");
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+

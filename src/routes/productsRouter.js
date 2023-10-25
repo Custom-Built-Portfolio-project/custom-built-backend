@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { handlePostProducts } from "../handlers/productsHandler/handlePostProducts.js";
+import { handlePostProducts } from "../handlers/productsHandler/productsHandlers.js";
 
 const productsRouter = Router();
 

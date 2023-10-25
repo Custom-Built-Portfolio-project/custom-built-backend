@@ -21,3 +21,9 @@ schema.index({ name: 1 });
 const categoryModel = mongoose.model(collection, schema);
 
 export default categoryModel;
+//       
+//       
+//       
+//        
+//       
+//    
