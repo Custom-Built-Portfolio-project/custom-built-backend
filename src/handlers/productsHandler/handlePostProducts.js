@@ -1,3 +1,13 @@
+// Handlers Get
+const getAllProducts = async (req, res) =>{
+  try {
+    const products = await Product.findAll();
+    res.json(products);
+ } catch (err) {
+    res.status(500).json({ message: err.message });
+ }
+}
+// Handlers Post
 import productsModel from "../../models/products.js";
 
 const handlePostProducts = async (req, res) => {
@@ -41,5 +51,5 @@ const handlePostProducts = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
-
+export { getAllProducts};
 export { handlePostProducts };

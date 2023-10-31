@@ -7,6 +7,8 @@ const postSubCategory = async (req, res) => {
       return res
         .status(400)
         .send({ status: "error", error: "Incomplete values" });
+    const existingSubCategory = await subCategoryModel.findOne({name: name})
+    if(existingSubCategory) return res.status(400).send({error: "Ya existe una subcategoria con ese nombre"})
     const newSubCategory = {
       name,
       subTypes
